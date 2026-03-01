@@ -26,20 +26,20 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="border-y border-border bg-surface-elevated/30 py-20">
+    <section className="border-y-3 border-border bg-surface-light py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-text-primary sm:text-4xl">
+          <h2 className="mb-4 text-3xl font-black uppercase tracking-tight text-text-primary sm:text-4xl">
             How It Works
           </h2>
-          <p className="mx-auto max-w-2xl text-text-secondary">
+          <p className="mx-auto max-w-2xl font-medium text-text-secondary">
             Three simple steps to support your favorite creator
           </p>
         </div>
 
         <div className="relative mx-auto grid max-w-4xl gap-8 md:grid-cols-3">
           {/* Connector line */}
-          <div className="absolute left-0 right-0 top-16 hidden h-px bg-gradient-to-r from-transparent via-border-light to-transparent md:block" />
+          <div className="absolute left-0 right-0 top-16 hidden h-[3px] bg-border md:block" />
 
           {steps.map((step, i) => (
             <motion.div
@@ -47,19 +47,19 @@ export function HowItWorks() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
+              transition={{ delay: i * 0.15, duration: 0.4 }}
               className="relative text-center"
             >
-              <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-border bg-surface-card">
-                <step.icon className="h-7 w-7 text-chainlink" />
-                <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-chainlink text-xs font-bold text-white">
+              <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center border-2 border-border bg-surface-white shadow-[3px_3px_0_#000]">
+                <step.icon className="h-7 w-7 text-primary" />
+                <span className="absolute -right-3 -top-3 flex h-7 w-7 items-center justify-center border-2 border-border bg-primary text-xs font-black text-white shadow-[2px_2px_0_#000]">
                   {step.step}
                 </span>
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-text-primary">
+              <h3 className="mb-2 text-lg font-bold uppercase text-text-primary">
                 {step.title}
               </h3>
-              <p className="text-sm text-text-secondary">{step.description}</p>
+              <p className="text-sm font-medium text-text-secondary">{step.description}</p>
             </motion.div>
           ))}
         </div>

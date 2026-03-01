@@ -68,34 +68,34 @@ export function WithdrawCard({ address }: WithdrawCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.15 }}
-      className="bg-surface-card border border-border rounded-2xl p-5"
+      transition={{ duration: 0.3, delay: 0.15 }}
+      className="bg-surface-white border-2 border-border p-5 shadow-[4px_4px_0_#000]"
     >
       <div className="flex items-center gap-3 mb-4">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10 text-accent">
+        <div className="flex h-9 w-9 items-center justify-center border-2 border-border bg-success text-white">
           <ArrowDownToLine className="h-4.5 w-4.5" />
         </div>
         <div>
-          <h3 className="text-base font-semibold text-text-primary">
+          <h3 className="text-base font-black uppercase text-text-primary">
             Withdraw ETH
           </h3>
-          <p className="text-xs text-text-muted">
+          <p className="text-xs font-bold text-text-muted">
             Withdraw your available ETH balance to your wallet
           </p>
         </div>
       </div>
 
       {/* Balance Display */}
-      <div className="mb-4 rounded-xl bg-surface-elevated border border-border/50 p-4">
-        <p className="text-xs font-medium text-text-muted mb-1">
+      <div className="mb-4 border-2 border-border bg-surface-light p-4">
+        <p className="text-xs font-bold uppercase tracking-wide text-text-muted mb-1">
           Available Balance
         </p>
         {isBalanceLoading ? (
           <Skeleton className="h-8 w-32" />
         ) : (
-          <p className="text-2xl font-bold text-text-primary">
+          <p className="text-2xl font-black text-text-primary">
             {ethBalance.toFixed(4)}{' '}
-            <span className="text-sm font-medium text-text-secondary">ETH</span>
+            <span className="text-sm font-bold text-text-secondary">ETH</span>
           </p>
         )}
       </div>
