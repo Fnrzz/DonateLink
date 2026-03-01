@@ -8,11 +8,11 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  default: "bg-chainlink/15 text-chainlink-light border-chainlink/25",
-  success: "bg-accent/15 text-accent border-accent/25",
-  warning: "bg-warning/15 text-warning border-warning/25",
-  danger: "bg-danger/15 text-danger border-danger/25",
-  muted: "bg-surface-hover text-text-muted border-border",
+  default: "bg-primary/15 text-primary border-primary",
+  success: "bg-success/15 text-success border-success",
+  warning: "bg-warning/15 text-warning border-warning",
+  danger: "bg-danger/15 text-danger border-danger",
+  muted: "bg-surface-muted text-text-muted border-border",
 };
 
 function Badge({
@@ -24,7 +24,7 @@ function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
+        "inline-flex items-center border-2 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide",
         variantStyles[variant],
         className
       )}

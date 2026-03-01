@@ -16,26 +16,23 @@ export function DonationAlert({ donation }: DonationAlertProps) {
       animate={{ scale: 1, y: 0 }}
       exit={{ scale: 0, y: 50 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="mx-auto max-w-md rounded-2xl border-2 border-chainlink bg-surface-elevated p-6 shadow-2xl shadow-chainlink/20"
+      className="mx-auto max-w-md border-3 border-primary bg-surface-white p-6 shadow-[6px_6px_0_#2563EB]"
     >
-      {/* Header glow accent */}
-      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
-
       {/* Amount */}
-      <p className="mb-2 text-center text-4xl font-bold text-accent">
+      <p className="mb-2 text-center text-4xl font-black text-success">
         {formatUsd(donation.amount_usd)}
       </p>
 
       {/* Donor name */}
-      <p className="mb-3 text-center text-lg font-semibold text-chainlink">
+      <p className="mb-3 text-center text-lg font-black uppercase text-primary">
         {donation.donor_name || "Anonymous"}
       </p>
 
       {/* Message */}
       {donation.message && (
-        <div className="mb-4 flex items-start gap-2 rounded-xl bg-surface-card/80 px-4 py-3">
+        <div className="mb-4 flex items-start gap-2 border-2 border-border bg-surface-light px-4 py-3">
           <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-text-muted" />
-          <p className="text-sm leading-relaxed text-text-primary">
+          <p className="text-sm font-medium leading-relaxed text-text-primary">
             {donation.message}
           </p>
         </div>
@@ -43,14 +40,14 @@ export function DonationAlert({ donation }: DonationAlertProps) {
 
       {/* Token + Chain info */}
       <div className="flex items-center justify-center gap-3">
-        <div className="flex items-center gap-1.5 rounded-full border border-border bg-surface-card px-3 py-1">
+        <div className="flex items-center gap-1.5 border-2 border-border bg-surface-white px-3 py-1">
           <Coins className="h-3.5 w-3.5 text-text-muted" />
-          <span className="text-xs font-medium text-text-secondary">
+          <span className="text-xs font-bold text-text-secondary">
             {donation.amount_token} {donation.token_symbol}
           </span>
         </div>
-        <div className="rounded-full border border-border bg-surface-card px-3 py-1">
-          <span className="text-xs font-medium text-text-secondary">
+        <div className="border-2 border-border bg-surface-white px-3 py-1">
+          <span className="text-xs font-bold text-text-secondary">
             {donation.source_chain}
           </span>
         </div>
