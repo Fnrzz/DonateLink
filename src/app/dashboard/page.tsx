@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { motion } from 'framer-motion';
 import { Wallet, UserPlus, LayoutDashboard } from 'lucide-react';
 import { useProfile } from '@/hooks/useProfile';
@@ -12,6 +12,8 @@ import { StatsCards } from '@/components/dashboard/StatsCards';
 import { DonationList } from '@/components/dashboard/DonationList';
 import { WithdrawCard } from '@/components/dashboard/WithdrawCard';
 import { ShareLinkCard } from '@/components/dashboard/ShareLinkCard';
+import { CONTRACTS } from '@/lib/contracts';
+import DonateLinkABI from '@/lib/abi/DonateLink.json';
 import type { Address } from 'viem';
 
 /* -------------------------------------------------------------------------- */
@@ -92,7 +94,7 @@ function ProfileSetup({
             className="w-full mt-2"
             isLoading={isCreating}
           >
-            Create Profile
+            {isCreating ? 'Registering on-chain...' : 'Create Profile'}
           </Button>
         </form>
       </div>
@@ -169,10 +171,22 @@ export default function DashboardPage() {
   const [isCreating, setIsCreating] = useState(false);
   const [createError, setCreateError] = useState('');
 
+  const { writeContractAsync } = useWriteContract();
+
   async function handleCreate(username: string, displayName: string) {
     try {
       setIsCreating(true);
       setCreateError('');
+
+      // Step 1: Register streamer on-chain
+      await writeContractAsync({
+        address: CONTRACTS.donateLink.address,
+        abi: DonateLinkABI,
+        functionName: 'registerStreamer',
+        chainId: CONTRACTS.donateLink.chainId,
+      });
+
+      // Step 2: Save profile to Supabase
       await createProfile({ username, display_name: displayName });
     } catch (err) {
       setCreateError(
