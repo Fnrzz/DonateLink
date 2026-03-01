@@ -14,21 +14,21 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-chainlink text-white hover:bg-chainlink-light active:bg-chainlink-light/90 shadow-md shadow-chainlink/20",
+    "bg-primary text-white border-2 border-border shadow-[4px_4px_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
   secondary:
-    "bg-surface-elevated text-text-primary border border-border hover:bg-surface-hover hover:border-border-light",
+    "bg-surface-white text-text-primary border-2 border-border shadow-[4px_4px_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
   accent:
-    "bg-accent text-white hover:bg-accent-light active:bg-accent-light/90 shadow-md shadow-accent/20",
+    "bg-accent text-text-primary border-2 border-border shadow-[4px_4px_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
   danger:
-    "bg-danger text-white hover:bg-danger/90 active:bg-danger/80 shadow-md shadow-danger/20",
+    "bg-danger text-white border-2 border-border shadow-[4px_4px_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
   ghost:
-    "bg-transparent text-text-secondary hover:bg-surface-hover hover:text-text-primary",
+    "bg-transparent text-text-secondary border-2 border-transparent hover:bg-surface-muted hover:border-border hover:text-text-primary",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-3 py-1.5 text-sm rounded-lg gap-1.5",
-  md: "px-4 py-2 text-sm rounded-lg gap-2",
-  lg: "px-6 py-3 text-base rounded-xl gap-2.5",
+  sm: "px-3 py-1.5 text-sm gap-1.5",
+  md: "px-4 py-2 text-sm gap-2",
+  lg: "px-6 py-3 text-base gap-2.5",
 };
 
 function Spinner() {
@@ -74,8 +74,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || isLoading}
         className={cn(
-          "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer",
-          "disabled:opacity-50 disabled:cursor-not-allowed",
+          "inline-flex items-center justify-center font-bold uppercase tracking-wide transition-all duration-150 cursor-pointer",
+          "disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-x-0 disabled:translate-y-0 disabled:shadow-none",
           variantStyles[variant],
           sizeStyles[size],
           className

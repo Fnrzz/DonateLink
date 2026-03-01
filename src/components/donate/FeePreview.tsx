@@ -27,23 +27,23 @@ export function FeePreview({
   const streamerReceives = amountUsd - platformFeeUsd;
 
   return (
-    <div className="rounded-xl border border-border bg-surface-elevated/50 p-4">
+    <div className="border-2 border-border bg-surface-light p-4">
       <div className="space-y-2 text-sm">
         <div className="flex justify-between">
-          <span className="text-text-secondary">You send</span>
-          <span className="font-medium text-text-primary">
+          <span className="font-bold text-text-secondary">You send</span>
+          <span className="font-bold text-text-primary">
             {formatToken(tokenAmount)} {tokenSymbol}
-            <span className="ml-1 text-text-muted">({formatUsd(amountUsd)})</span>
+            <span className="ml-1 font-medium text-text-muted">({formatUsd(amountUsd)})</span>
           </span>
         </div>
         <div className="flex justify-between">
-          <span className="text-text-secondary">Platform fee (5%)</span>
-          <span className="text-text-muted">-{formatUsd(platformFeeUsd)}</span>
+          <span className="font-bold text-text-secondary">Platform fee (5%)</span>
+          <span className="font-medium text-text-muted">-{formatUsd(platformFeeUsd)}</span>
         </div>
         {sourceChain !== "base" && (
           <div className="flex justify-between">
-            <span className="text-text-secondary">CCIP bridge fee</span>
-            <span className="text-text-muted">
+            <span className="font-bold text-text-secondary">CCIP bridge fee</span>
+            <span className="font-medium text-text-muted">
               {isFeeLoading
                 ? "estimating..."
                 : ccipFeeUsd
@@ -52,10 +52,10 @@ export function FeePreview({
             </span>
           </div>
         )}
-        <div className="border-t border-border pt-2">
+        <div className="border-t-2 border-border pt-2">
           <div className="flex justify-between">
-            <span className="font-medium text-text-primary">Creator receives</span>
-            <span className="font-bold text-accent">{formatUsd(streamerReceives)}</span>
+            <span className="font-black text-text-primary">Creator receives</span>
+            <span className="font-black text-success">{formatUsd(streamerReceives)}</span>
           </div>
         </div>
       </div>

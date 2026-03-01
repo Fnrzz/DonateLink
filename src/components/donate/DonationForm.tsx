@@ -199,11 +199,11 @@ export function DonationForm({ streamerAddress, streamerName }: DonationFormProp
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
-      className="space-y-5 rounded-2xl border border-border bg-surface-card p-6"
+      className="space-y-5 border-2 border-border bg-surface-white p-6 shadow-[4px_4px_0_#000]"
     >
       {/* Donor Name */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-text-secondary">
+        <label className="mb-2 block text-sm font-bold uppercase tracking-wide text-text-primary">
           Your Name
         </label>
         <input
@@ -212,13 +212,13 @@ export function DonationForm({ streamerAddress, streamerName }: DonationFormProp
           onChange={(e) => setDonorName(e.target.value)}
           placeholder="Anonymous"
           maxLength={50}
-          className="w-full rounded-xl border border-border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted focus:border-chainlink focus:outline-none focus:ring-1 focus:ring-chainlink"
+          className="w-full border-2 border-border bg-surface-white px-4 py-3 text-text-primary font-medium placeholder:text-text-muted focus:border-primary focus:outline-none"
         />
       </div>
 
       {/* Message */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-text-secondary">
+        <label className="mb-2 block text-sm font-bold uppercase tracking-wide text-text-primary">
           Message
         </label>
         <textarea
@@ -227,9 +227,9 @@ export function DonationForm({ streamerAddress, streamerName }: DonationFormProp
           placeholder={`Say something nice to ${streamerName}...`}
           maxLength={200}
           rows={3}
-          className="w-full resize-none rounded-xl border border-border bg-surface-elevated px-4 py-3 text-text-primary placeholder:text-text-muted focus:border-chainlink focus:outline-none focus:ring-1 focus:ring-chainlink"
+          className="w-full resize-none border-2 border-border bg-surface-white px-4 py-3 text-text-primary font-medium placeholder:text-text-muted focus:border-primary focus:outline-none"
         />
-        <p className="mt-1 text-right text-xs text-text-muted">
+        <p className="mt-1 text-right text-xs font-bold text-text-muted">
           {message.length}/200
         </p>
       </div>
@@ -256,8 +256,8 @@ export function DonationForm({ streamerAddress, streamerName }: DonationFormProp
 
       {/* Wrong Chain Warning */}
       {isWrongChain && (
-        <div className="flex items-center gap-2 rounded-xl border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-400">
-          <AlertTriangle className="h-4 w-4 shrink-0" />
+        <div className="flex items-center gap-2 border-2 border-warning bg-warning/10 px-4 py-3 text-sm font-bold text-text-primary">
+          <AlertTriangle className="h-4 w-4 shrink-0 text-warning" />
           <span>
             Please switch to {SUPPORTED_CHAINS[selectedChain]?.name} to continue
           </span>
@@ -272,7 +272,7 @@ export function DonationForm({ streamerAddress, streamerName }: DonationFormProp
       ) : isWrongChain ? (
         <button
           onClick={handleSwitchChain}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-yellow-600 py-4 text-base font-semibold text-white transition-all hover:bg-yellow-500"
+          className="flex w-full items-center justify-center gap-2 border-2 border-border bg-warning py-4 text-base font-black uppercase text-text-primary shadow-[4px_4px_0_#000] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#000]"
         >
           Switch to {SUPPORTED_CHAINS[selectedChain]?.name}
         </button>
@@ -280,7 +280,7 @@ export function DonationForm({ streamerAddress, streamerName }: DonationFormProp
         <button
           onClick={handleSubmit}
           disabled={isPending || isConfirming || amountUsd <= 0}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-chainlink py-4 text-base font-semibold text-white transition-all hover:bg-chainlink-light hover:shadow-lg hover:shadow-chainlink/25 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2 border-2 border-border bg-primary py-4 text-base font-black uppercase text-white shadow-[4px_4px_0_#000] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 disabled:translate-x-0 disabled:translate-y-0 disabled:shadow-none"
         >
           {isPending ? (
             "Confirm in wallet..."

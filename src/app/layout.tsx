@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         <Web3Provider>
           <div className="flex min-h-screen flex-col">
@@ -35,12 +35,14 @@ export default function RootLayout({
           <Toaster
             richColors
             position="bottom-right"
-            theme="dark"
             toastOptions={{
               style: {
-                background: "#131B2E",
-                border: "1px solid #1E2D45",
-                color: "#F1F5F9",
+                background: "#FFFFFF",
+                border: "2px solid #000000",
+                color: "#1A1A1A",
+                fontWeight: 700,
+                boxShadow: "3px 3px 0 #000000",
+                borderRadius: "0px",
               },
             }}
           />

@@ -17,8 +17,8 @@ type LeaderboardTableProps = {
 export function LeaderboardTable({ entries }: LeaderboardTableProps) {
   if (entries.length === 0) {
     return (
-      <div className="rounded-2xl border border-border bg-surface-card px-6 py-16 text-center">
-        <p className="text-lg text-text-secondary">
+      <div className="border-2 border-border bg-surface-white px-6 py-16 text-center shadow-[4px_4px_0_#000]">
+        <p className="text-lg font-bold text-text-secondary">
           No donations recorded yet. Be the first!
         </p>
       </div>
@@ -26,28 +26,28 @@ export function LeaderboardTable({ entries }: LeaderboardTableProps) {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-surface-card">
+    <div className="overflow-hidden border-2 border-border bg-surface-white shadow-[4px_4px_0_#000]">
       <table className="w-full">
         <thead>
-          <tr className="border-b border-border bg-surface-elevated/50">
-            <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-text-muted">
+          <tr className="border-b-2 border-border bg-primary">
+            <th className="px-6 py-4 text-left text-xs font-black uppercase tracking-wider text-white">
               Rank
             </th>
-            <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-text-muted">
+            <th className="px-6 py-4 text-left text-xs font-black uppercase tracking-wider text-white">
               Donor
             </th>
-            <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-text-muted">
+            <th className="px-6 py-4 text-left text-xs font-black uppercase tracking-wider text-white">
               Name
             </th>
-            <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-text-muted">
+            <th className="px-6 py-4 text-right text-xs font-black uppercase tracking-wider text-white">
               Total Donated
             </th>
-            <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-text-muted">
+            <th className="px-6 py-4 text-right text-xs font-black uppercase tracking-wider text-white">
               Donations
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-border">
+        <tbody>
           {entries.map((entry, index) => {
             const rank = index + 1;
             const trophyColor = TROPHY_COLORS[rank];
@@ -55,7 +55,7 @@ export function LeaderboardTable({ entries }: LeaderboardTableProps) {
             return (
               <tr
                 key={entry.donor_address}
-                className="transition-colors hover:bg-surface-hover/50"
+                className="border-b-2 border-border last:border-b-0 transition-colors hover:bg-surface-light"
               >
                 {/* Rank */}
                 <td className="px-6 py-4">
@@ -66,7 +66,7 @@ export function LeaderboardTable({ entries }: LeaderboardTableProps) {
                         style={{ color: trophyColor }}
                       />
                     ) : (
-                      <span className="text-sm font-medium text-text-muted">
+                      <span className="text-sm font-black text-text-primary">
                         {rank}
                       </span>
                     )}
@@ -75,28 +75,28 @@ export function LeaderboardTable({ entries }: LeaderboardTableProps) {
 
                 {/* Donor address */}
                 <td className="px-6 py-4">
-                  <span className="font-mono text-sm text-text-secondary">
+                  <span className="font-mono text-sm font-bold text-text-secondary">
                     {truncateAddress(entry.donor_address)}
                   </span>
                 </td>
 
                 {/* Donor name */}
                 <td className="px-6 py-4">
-                  <span className="text-sm font-medium text-text-primary">
+                  <span className="text-sm font-bold text-text-primary">
                     {entry.donor_name || "Anonymous"}
                   </span>
                 </td>
 
                 {/* Total donated */}
                 <td className="px-6 py-4 text-right">
-                  <span className="text-sm font-semibold text-accent">
+                  <span className="text-sm font-black text-success">
                     {formatUsd(entry.total_donated_usd)}
                   </span>
                 </td>
 
                 {/* Donation count */}
                 <td className="px-6 py-4 text-right">
-                  <span className="text-sm text-text-secondary">
+                  <span className="text-sm font-bold text-text-secondary">
                     {entry.donation_count}
                   </span>
                 </td>

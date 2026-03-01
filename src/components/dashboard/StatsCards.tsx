@@ -28,19 +28,19 @@ function StatCard({ label, value, icon, index, isLoading }: StatCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="bg-surface-card border border-border rounded-2xl p-5"
+      transition={{ duration: 0.3, delay: index * 0.08 }}
+      className="bg-surface-white border-2 border-border p-5 shadow-[4px_4px_0_#000]"
     >
       <div className="flex items-center justify-between mb-3">
-        <span className="text-sm font-medium text-text-muted">{label}</span>
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-chainlink/10 text-chainlink">
+        <span className="text-sm font-bold uppercase tracking-wide text-text-secondary">{label}</span>
+        <div className="flex h-9 w-9 items-center justify-center border-2 border-border bg-primary text-white">
           {icon}
         </div>
       </div>
       {isLoading ? (
         <Skeleton className="h-8 w-28" />
       ) : (
-        <p className="text-2xl font-bold text-text-primary">{value}</p>
+        <p className="text-2xl font-black text-text-primary">{value}</p>
       )}
     </motion.div>
   );

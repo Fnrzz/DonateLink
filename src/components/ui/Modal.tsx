@@ -40,8 +40,8 @@ function Modal({ isOpen, onClose, title, children, className }: ModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            transition={{ duration: 0.15 }}
+            className="absolute inset-0 bg-black/50"
             onClick={onClose}
           />
 
@@ -50,22 +50,22 @@ function Modal({ isOpen, onClose, title, children, className }: ModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
             className={cn(
               "relative z-10 w-full max-w-lg mx-4",
-              "bg-surface-card border border-border rounded-2xl shadow-2xl shadow-black/40",
+              "bg-surface-white border-3 border-border shadow-[6px_6px_0_#000]",
               className
             )}
           >
             {/* Header */}
             {title && (
-              <div className="flex items-center justify-between border-b border-border px-6 py-4">
-                <h2 className="text-lg font-semibold text-text-primary">
+              <div className="flex items-center justify-between border-b-2 border-border px-6 py-4">
+                <h2 className="text-lg font-black uppercase tracking-wide text-text-primary">
                   {title}
                 </h2>
                 <button
                   onClick={onClose}
-                  className="rounded-lg p-1.5 text-text-muted transition-colors hover:bg-surface-hover hover:text-text-primary cursor-pointer"
+                  className="border-2 border-border p-1.5 text-text-muted transition-colors hover:bg-surface-muted hover:text-text-primary cursor-pointer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ function Modal({ isOpen, onClose, title, children, className }: ModalProps) {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
