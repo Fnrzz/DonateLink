@@ -54,6 +54,7 @@ contract DonateLink is Ownable, ReentrancyGuard {
     error TransferFailed();
     error FeeTooHigh();
     error InvalidPrice();
+    error StalePrice();
 
     // --- Modifiers ---
     modifier onlyRegistered() {
@@ -196,24 +197,25 @@ contract DonateLink is Ownable, ReentrancyGuard {
     }
 
     // --- Price Feed ---
+    uint256 public constant PRICE_FEED_STALE_THRESHOLD = 3600; // 1 hour
+
     function getUsdValue(address _token, uint256 _amount) public view returns (uint256) {
         if (address(priceFeeds[_token]) == address(0)) {
             // No price feed → assume stablecoin 1:1. USDC has 6 decimals, return in 8.
             return (_amount * 1e8) / 1e6;
         }
-        (, int256 price,,,) = priceFeeds[_token].latestRoundData();
+        (, int256 price,, uint256 updatedAt,) = priceFeeds[_token].latestRoundData();
         if (price <= 0) revert InvalidPrice();
+        if (block.timestamp - updatedAt > PRICE_FEED_STALE_THRESHOLD) revert StalePrice();
 
         // ETH/LINK: 18 decimals amount, 8 decimals price → 8 decimals result
-        if (_token == address(0)) {
-            return (_amount * uint256(price)) / 1e18;
-        }
         return (_amount * uint256(price)) / 1e18;
     }
 
     function getLatestPrice(address _token) external view returns (int256) {
         if (address(priceFeeds[_token]) == address(0)) revert InvalidPrice();
-        (, int256 price,,,) = priceFeeds[_token].latestRoundData();
+        (, int256 price,, uint256 updatedAt,) = priceFeeds[_token].latestRoundData();
+        if (block.timestamp - updatedAt > PRICE_FEED_STALE_THRESHOLD) revert StalePrice();
         return price;
     }
 

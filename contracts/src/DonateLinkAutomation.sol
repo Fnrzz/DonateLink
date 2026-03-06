@@ -35,9 +35,13 @@ contract DonateLinkAutomation is AutomationCompatibleInterface {
         performData = abi.encode(currentCount, countChanged, timeElapsed);
     }
 
-    function performUpkeep(bytes calldata performData) external override {
-        (uint256 currentCount, bool countChanged, bool timeElapsed) =
-            abi.decode(performData, (uint256, bool, bool));
+    function performUpkeep(bytes calldata) external override {
+        // Re-read state directly — do NOT trust performData from caller
+        uint256 currentCount = donateLinkMain.totalDonationsCount();
+        bool countChanged = currentCount > lastKnownCount;
+        bool timeElapsed = (block.timestamp - lastUpkeepTimestamp) >= upkeepInterval;
+
+        require(countChanged || timeElapsed, "No upkeep needed");
 
         if (countChanged) {
             lastKnownCount = currentCount;
