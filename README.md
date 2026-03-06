@@ -35,7 +35,8 @@ No middlemen. No bank accounts. No borders. Just wallets.
 |---|---|
 | **Web App** | [donatelink.vercel.app](https://donatelink.vercel.app) |
 | **GitHub** | [github.com/Fnrzz/DonateLink](https://github.com/Fnrzz/DonateLink) |
-| **Demo Video** | [YouTube / Loom link — see submission] |
+| **Demo Video** | [youtu.be/uaidAjxFSd8](https://youtu.be/uaidAjxFSd8) |
+| **Pitch Deck** | [View on Google Drive](https://drive.google.com/file/d/1xrspUJNPXlYOWRY0NlQKdTxpYH3nu_74/view?usp=drivesdk) |
 
 ---
 
