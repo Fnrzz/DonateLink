@@ -18,7 +18,7 @@ contract MockPriceFeed {
         view
         returns (uint80, int256, uint256, uint256, uint80)
     {
-        return (0, price, 0, block.timestamp, 0);
+        return (0, price, 0, block.timestamp, 0); // updatedAt = block.timestamp (always fresh)
     }
 
     function decimals() external view returns (uint8) {
