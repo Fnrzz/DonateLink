@@ -156,6 +156,15 @@ This is exactly the Chainlink Convergence vision: on-chain events seamlessly tri
 | **Automation** | Base Sepolia | [`0x0C4C4F264D250Ce93A387B54FB22EFF49935e3A3`](https://sepolia.basescan.org/address/0x0C4C4F264D250Ce93A387B54FB22EFF49935e3A3) |
 | **CCIPSender** | Ethereum Sepolia | [`0x5217eAA2569793869caAeb8286a9Ce0854426901`](https://sepolia.etherscan.io/address/0x5217eAA2569793869caAeb8286a9Ce0854426901) |
 
+### Chainlink Automation Upkeep
+
+| Field | Value |
+|---|---|
+| **Upkeep ID** | `91078708185952551655333623622115851249057907578450900289275153372405102042487` |
+| **Upkeep Address** | [`0x0C4C4F264D250Ce93A387B54FB22EFF49935e3A3`](https://automation.chain.link/base-sepolia/91078708185952551655333623622115851249057907578450900289275153372405102042487) |
+| **Network** | Base Sepolia |
+| **Trigger Type** | Custom Logic |
+
 ---
 
 ## Tech Stack
