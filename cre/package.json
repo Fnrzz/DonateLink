@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "simulate": "cre workflow simulate --workflow donation-orchestrator"
+    "simulate": "cre workflow simulate workflows/donation-orchestrator -T default",
+    "cre-compile": "cre-compile"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@chainlink/cre-sdk": "latest"
+  },
   "devDependencies": {
     "typescript": "^5.4.0"
   }
