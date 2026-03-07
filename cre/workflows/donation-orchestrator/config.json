@@ -1,4 +1,4 @@
 {
   "apiUrl": "https://donatelink.vercel.app",
-  "geminiApiKey": "AIzaSyDFaZgaIUpec8hvkBCXgrnMgwoa3c0-3MU"
+  "geminiApiKey": "[GCP_API_KEY]"
 }
