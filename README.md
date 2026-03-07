@@ -87,6 +87,24 @@ How it works: The CRE Workflow subscribes to `DonationReceived` events on Base S
 
 This is exactly the Chainlink Convergence vision: on-chain events seamlessly triggering verifiable off-chain computation.
 
+**CRE Simulation Output** (verified 2026-03-07):
+
+```
+✓ Workflow compiled
+✓ Found log event at index 0: contract=0x5217eAA2569793869caAeb8286a9Ce0854426901, topics=3
+✓ Created EVM trigger log for transaction 0x14950b7d78c303bcbea102155d9f4d8564287b662fa2cde3faa13f5efae145a0
+
+[USER LOG] Processing donation event...
+[USER LOG] TX Hash: 0x14950b7d78c303bcbea102155d9f4d8564287b662fa2cde3faa13f5efae145a0
+[USER LOG] Amount USD: 1, Token Amount: 0.000504029397293752
+[USER LOG] Prices: {"chainlink":{"usd":8.78},"ethereum":{"usd":1980.96}}
+[USER LOG] Celebration: 🎉 Donation received!
+[USER LOG] Orchestration complete
+
+✓ Workflow Simulation Result: {"success":true,...,"celebrationMessage":"🎉 Donation received!"}
+✓ Simulation complete! Ready to deploy your workflow?
+```
+
 ---
 
 ## Architecture
